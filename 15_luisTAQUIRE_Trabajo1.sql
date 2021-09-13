@@ -1,0 +1,55 @@
+--                 EJECUTAR EN EL USUARIO SYS O SYSTEM ORACLE 
+
+-- CREATE USER edu
+-- IDENTIFIED BY "edu"
+-- DEFAULT TABLESPACE USERS
+-- TEMPORARY TABLESPACE TEMP;
+-- GRANT CONNECT, RESOURCE, CREATE SESSION, CREATE VIEW TO edu;
+
+--                 CREAR LA CONEXIÓN A USUARIO EDU Y EJECUTAR LO SIGUIENTE 
+
+
+-- Table: TRABAJO
+CREATE TABLE TRABAJO (
+    IDTRA integer  NOT NULL,
+    RADTRA varchar2(50)  NULL,
+    BOXTRA varchar2(100)  NULL,
+    ONEATRA varchar2(50)  NULL,
+    ONEBTRA varchar2(50)  NULL,
+    ONECTRA varchar2(50)  NULL,
+    SPIATRA integer  NULL,
+    SPIBTRA integer  NULL,
+    SLITRA integer  NULL,
+    KNOTRA integer  NULL,
+    CONSTRAINT TRABAJO_pk PRIMARY KEY (IDTRA)
+) ;
+
+
+------------------------------------  TRIGGER AND SECUENCE
+
+
+create SEQUENCE SEC_TRABAJO
+START WITH 1
+INCREMENT BY 1
+order;
+
+/
+-- Creacion de trigger
+create or replace TRIGGER TRIG_TRABAJO
+BEFORE INSERT ON TRABAJO
+FOR EACH ROW
+BEGIN
+    SELECT SEC_TRABAJO.NEXTVAL 
+    INTO :NEW.IDTRA 
+    FROM DUAL;
+end;
+
+/
+
+
+-- select * from trabajo
+
+insert into TRABAJO (RADTRA) values ('BMW');
+
+
+--select * from TRABAJO ORDER BY IDTRA DESC
