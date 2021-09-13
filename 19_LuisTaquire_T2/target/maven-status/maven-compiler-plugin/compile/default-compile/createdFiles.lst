@@ -1,0 +1,6 @@
+Model\Trabajo.class
+Dao\Conexion.class
+Controller\CheckboxMenu.class
+Controller\TrabajoC.class
+Controller\EjemploSelectOneMenu.class
+Dao\TrabajoImpl.class
